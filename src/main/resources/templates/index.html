@@ -6,6 +6,14 @@
     <div>
         <h1>Página de Inicio</h1>
         <p th:text="${mensaje}"></p>
+        <hr>
+        <div>
+            <b>CÉDULA:</b> <span th:text="${usuario.id}"></span></br>
+            <b>CLAVE:</b> <span th:text="${usuario.clave}"></span></br>
+            <b>NOMBRE:</b> <span th:text="${usuario.nombre}"></span></br>
+            <b>EMAIL:</b> <span th:text="${usuario.email}"></span></br>
+            <b>ROL:</b> <span th:text="${usuario.rol}"></span></br>
+        </div>
     </div>
 </body>
 </html>
