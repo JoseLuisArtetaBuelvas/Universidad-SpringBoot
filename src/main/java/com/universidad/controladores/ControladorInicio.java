@@ -3,7 +3,7 @@ package com.universidad.controladores;
 import java.util.Arrays;
 import java.util.List;
 
-import com.universidad.IUsuarioCrud;
+import com.universidad.servicio.IUsuarioServicio;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -16,10 +16,10 @@ import com.universidad.modelo.Usuario;
 @Slf4j
 public class ControladorInicio {
     @Autowired
-    IUsuarioCrud usuarioCrud;
+    IUsuarioServicio usuarioServicio;
     @GetMapping("/")
     public String inicio(Model modelo) {
-        List<Usuario> listaUsuarios = (List<Usuario>) usuarioCrud.findAll();
+        List<Usuario> listaUsuarios = usuarioServicio.listarUsuarios();
         modelo.addAttribute("usuarios", listaUsuarios);
         log.info("Ejecutando el controlador Spring MVC");
         return "index";
