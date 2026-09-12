@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.ui.Model;
 import lombok.extern.slf4j.Slf4j;
 import com.universidad.modelo.Usuario;
+import org.springframework.web.bind.annotation.PostMapping;
 
 
 @Controller
@@ -23,5 +24,16 @@ public class ControladorInicio {
         modelo.addAttribute("usuarios", listaUsuarios);
         log.info("Ejecutando el controlador Spring MVC");
         return "index";
+    }
+
+    @GetMapping("/agregar")
+    public String agregar(Usuario usuario) {
+        return "modificar";
+    }
+
+    @PostMapping("/guardar")
+    public String guardar(Usuario usuario) {
+        usuarioServicio.guardarUsuario(usuario);
+        return "redirect:/";
     }
 }

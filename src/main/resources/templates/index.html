@@ -5,6 +5,7 @@
 <body>
     <div>
         <h1>Página de Inicio</h1>
+        <a th:href="@{/agregar}">Agregar Usuario</a>
         <p th:text="${mensaje}"></p>
         <hr>
         <div th:if="${usuario != null}">
