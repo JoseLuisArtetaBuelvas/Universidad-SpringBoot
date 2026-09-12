@@ -7,12 +7,40 @@
         <h1>Página de Inicio</h1>
         <p th:text="${mensaje}"></p>
         <hr>
-        <div>
-            <b>CÉDULA:</b> <span th:text="${usuario.id}"></span></br>
-            <b>CLAVE:</b> <span th:text="${usuario.clave}"></span></br>
-            <b>NOMBRE:</b> <span th:text="${usuario.nombre}"></span></br>
-            <b>EMAIL:</b> <span th:text="${usuario.email}"></span></br>
-            <b>ROL:</b> <span th:text="${usuario.rol}"></span></br>
+        <div th:if="${usuario != null}">
+            <b>CÉDULA:</b> <span th:text="${usuario.id}"></span><br/>
+            <b>CLAVE:</b> <span th:text="${usuario.clave}"></span><br/>
+            <b>NOMBRE:</b> <span th:text="${usuario.nombre}"></span><br/>
+            <b>EMAIL:</b> <span th:text="${usuario.email}"></span><br/>
+            <b>ROL:</b> <span th:text="${usuario.rol}"></span><br/>
+        </div>
+
+        <h2>Lista de Personas</h2>
+        <hr>
+        <div th:if="${usuarios != null and !usuarios.empty}">
+            <table border="1">
+                <thead>
+                    <tr>
+                        <th>CÉDULA</th>
+                        <th>CLAVE</th>
+                        <th>NOMBRE</th>
+                        <th>EMAIL</th>
+                        <th>ROL</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr th:each="usuario : ${usuarios}">
+                        <td th:text="${usuario.id}"></td>
+                        <td th:text="${usuario.clave}"></td>
+                        <td th:text="${usuario.nombre}"></td>
+                        <td th:text="${usuario.email}"></td>
+                        <td th:text="${usuario.rol}"></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div th:if="${usuarios == null or usuarios.empty}">
+            <p>No hay usuarios disponibles.</p>
         </div>
     </div>
 </body>
