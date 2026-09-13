@@ -7,42 +7,42 @@
     <header th:replace="~{layout/plantilla :: header}"></header>
 
     <div class="container">
-        <h1>Datos del usuario</h1>
-        <a class="btn btn-secondary" th:href="@{/}">Regresar</a>
+        <h1 th:text="#{formulario.titulo}">Datos del usuario</h1>
+        <a class="btn btn-secondary" th:href="@{/}" th:text="#{formulario.boton.regresar}">Regresar</a>
         <br/><br/>
         <form th:action="@{/guardar}" method="post" th:object="${usuario}">
             <div class="form-group">
-                <label for="id">Cédula:</label>
+                <label for="id" th:text="#{formulario.campo.id}">Cédula:</label>
                 <input type="text" th:field="*{id}"/>
                 <span class="error-message" th:if="${#fields.hasErrors('id')}" th:errors="*{id}">Error Cédula</span>
             </div>
             <div class="form-group">
-                <label for="clave">Clave:</label>
+                <label for="clave" th:text="#{formulario.campo.clave}">Clave:</label>
                 <input type="password" th:field="*{clave}"/>
                 <span class="error-message" th:if="${#fields.hasErrors('clave')}" th:errors="*{clave}">Error Clave</span>
             </div>
             <div class="form-group">
-                <label for="nombre">Nombre:</label>
+                <label for="nombre" th:text="#{formulario.campo.nombre}">Nombre:</label>
                 <input type="text" th:field="*{nombre}"/>
                 <span class="error-message" th:if="${#fields.hasErrors('nombre')}" th:errors="*{nombre}">Error Nombre</span>
             </div>
             <div class="form-group">
-                <label for="email">Email:</label>
+                <label for="email" th:text="#{formulario.campo.email}">Email:</label>
                 <input type="email" th:field="*{email}"/>
                 <span class="error-message" th:if="${#fields.hasErrors('email')}" th:errors="*{email}">Error Email</span>
             </div>
             <div class="form-group">
-                <label for="rol">Rol:</label>
+                <label for="rol" th:text="#{formulario.campo.rol}">Rol:</label>
                 <select th:field="*{rol}">
-                    <option value="">-- Seleccione un rol --</option>
+                    <option value="" th:text="#{formulario.rol.placeholder}">-- Seleccione un rol --</option>
                     <option value="ADMIN">ADMIN</option>
                     <option value="USER">USER</option>
                 </select>
                 <span class="error-message" th:if="${#fields.hasErrors('rol')}" th:errors="*{rol}">Error Rol</span>
             </div>
             <br/>
-            <input class="btn btn-secondary" type="reset" value="Restablecer"/>
-            <input class="btn btn-primary" type="submit" value="Guardar"/>
+            <input class="btn btn-secondary" type="reset" th:value="#{formulario.boton.restablecer}" value="Restablecer"/>
+            <input class="btn btn-primary" type="submit" th:value="#{formulario.boton.guardar}" value="Guardar"/>
         </form>
     </div>
 
