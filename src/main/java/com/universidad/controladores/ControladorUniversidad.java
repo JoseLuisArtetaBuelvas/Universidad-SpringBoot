@@ -49,4 +49,11 @@ public class ControladorUniversidad {
         modelo.addAttribute("universidad", universidad);
         return "universidad-formulario";
     }
+
+    @GetMapping({"/universidades/eliminar/{id}", "/universidades/eliminar"})
+    public String eliminar(Universidad universidad) {
+        log.info("Eliminando universidad: " + universidad);
+        universidadServicio.eliminarUniversidad(universidad);
+        return "redirect:/universidades";
+    }
 }
