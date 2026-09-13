@@ -40,4 +40,16 @@ public class UsuarioServicioImp implements IUsuarioServicio {
     public Usuario buscarUsuario(Usuario usuario) {
         return usuarioCrud.findById(usuario.getId()).orElse(null);
     }
+
+    @Transactional(readOnly = true)
+    @Override
+    public List<Usuario> buscarPorRol(String rol) {
+        return usuarioCrud.findByRol(rol);
+    }
+
+    @Transactional(readOnly = true)
+    @Override
+    public List<Usuario> buscarPorNombre(String nombre) {
+        return usuarioCrud.findByNombreContainingIgnoreCase(nombre);
+    }
 }

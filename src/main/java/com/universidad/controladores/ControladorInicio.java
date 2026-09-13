@@ -13,6 +13,7 @@ import com.universidad.modelo.Usuario;
 import jakarta.validation.Valid;
 import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 
 @Controller
@@ -55,5 +56,24 @@ public class ControladorInicio {
         log.info("Eliminando usuario: " + usuario);
         usuarioServicio.eliminarUsuario(usuario);
         return "redirect:/";
+    }
+
+    @GetMapping("/reportes")
+    public String reportes(
+            @RequestParam(required = false) String rol,
+            @RequestParam(required = false) String nombre,
+            Model modelo) {
+
+        if (rol != null && !rol.isBlank()) {
+            modelo.addAttribute("resultadoRol", usuarioServicio.buscarPorRol(rol));
+            modelo.addAttribute("rol", rol);
+        }
+
+        if (nombre != null && !nombre.isBlank()) {
+            modelo.addAttribute("resultadoNombre", usuarioServicio.buscarPorNombre(nombre));
+            modelo.addAttribute("nombre", nombre);
+        }
+
+        return "usuario-reportes";
     }
 }
