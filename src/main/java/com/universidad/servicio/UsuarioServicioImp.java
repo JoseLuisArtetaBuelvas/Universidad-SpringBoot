@@ -28,7 +28,11 @@ public class UsuarioServicioImp implements IUsuarioServicio {
     @Transactional
     @Override
     public void eliminarUsuario(Usuario usuario) {
-        usuarioCrud.delete(usuario);
+        if (usuario != null && usuario.getId() != null) {
+            usuarioCrud.deleteById(usuario.getId());
+        } else if (usuario != null) {
+            usuarioCrud.delete(usuario);
+        }
     }
 
     @Transactional(readOnly = true)

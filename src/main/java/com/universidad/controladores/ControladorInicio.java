@@ -37,11 +37,18 @@ public class ControladorInicio {
         return "redirect:/";
     }
 
-    @GetMapping("/modificar/{id}")
+    @GetMapping({"/modificar/{id}", "/modificar"})
     public String modificar(Usuario usuario, Model modelo) {
         log.info("Modificando usuario: " + usuario);
         usuario = usuarioServicio.buscarUsuario(usuario);
         modelo.addAttribute("usuario", usuario);
         return "modificar";
+    }
+
+    @GetMapping({"/eliminar/{id}", "/eliminar"})
+    public String eliminar(Usuario usuario) {
+        log.info("Eliminando usuario: " + usuario);
+        usuarioServicio.eliminarUsuario(usuario);
+        return "redirect:/";
     }
 }

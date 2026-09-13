@@ -28,6 +28,7 @@
                         <th>EMAIL</th>
                         <th>ROL</th>
                         <th>MODIFICAR</th>
+                        <th>ELIMINAR</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -39,6 +40,9 @@
                         <td th:text="${usuario.rol}"></td>
                         <td>
                             <a th:href="@{/modificar/{id}(id=${usuario.id})}" th:text="Modificar"></a>
+                        </td>
+                        <td>
+                            <a th:href="@{/eliminar/{id}(id=${usuario.id})}" th:text="Eliminar"></a>
                         </td>
                     </tr>
                 </tbody>
