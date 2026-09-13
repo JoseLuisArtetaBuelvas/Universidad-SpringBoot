@@ -133,14 +133,6 @@
                 margin: 1rem;
             }
         }
-        footer {
-            text-align: center;
-            padding: 1.5rem;
-            background-color: #1e293b;
-            color: #94a3b8;
-            font-size: 0.9rem;
-            margin-top: 3rem;
-        }
     </style>
 </head>
 <body>
@@ -164,10 +156,5 @@
             <a sec:authorize="!isAuthenticated()" class="btn btn-primary" th:href="@{/login}" th:text="#{login.titulo}">Iniciar Sesión</a>
         </nav>
     </header>
-
-    <!-- Fragmento de pie de página -->
-    <footer th:fragment="footer">
-        <p th:text="#{plantilla.pie}">&copy; 2026 Universidad de Cartagena - Ingeniería de Desarrollo Web. Todos los derechos reservados.</p>
-    </footer>
 </body>
 </html>
