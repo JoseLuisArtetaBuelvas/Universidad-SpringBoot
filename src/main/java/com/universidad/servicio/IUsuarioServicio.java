@@ -10,4 +10,6 @@ public interface IUsuarioServicio {
     public void guardarUsuario(Usuario usuario);
     public void eliminarUsuario(Usuario usuario);
     public Usuario buscarUsuario(Usuario usuario);
+    public List<Usuario> buscarPorRol(String rol);
+    public List<Usuario> buscarPorNombre(String nombre);
 }
