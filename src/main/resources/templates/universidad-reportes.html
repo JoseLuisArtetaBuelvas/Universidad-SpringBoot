@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{layout/plantilla :: head}">
+    <title>Reportes de universidades</title>
+</head>
+<body>
+    <header th:replace="~{layout/plantilla :: header}"></header>
+
+    <div class="container">
+        <h1 th:text="#{universidad.reportes.titulo}">Reportes de Universidades</h1>
+        <a class="btn btn-secondary" th:href="@{/universidades}" th:text="#{formulario.boton.regresar}">Regresar</a>
+        <hr/>
+
+        <h2 th:text="#{universidad.reportes.ciudad.titulo}">Buscar por ciudad</h2>
+        <form th:action="@{/universidades/reportes}" method="get">
+            <div class="form-group">
+                <label for="ciudad" th:text="#{universidad.formulario.campo.ciudad}">Ciudad:</label>
+                <input type="text" id="ciudad" name="ciudad" th:value="${ciudad}"/>
+            </div>
+            <input class="btn btn-primary" type="submit" th:value="#{universidad.reportes.boton.buscar}" value="Buscar"/>
+        </form>
+        <div th:if="${resultadoCiudad != null}">
+            <table>
+                <thead>
+                    <tr>
+                        <th th:text="#{universidad.columna.nombre}">NOMBRE</th>
+                        <th th:text="#{universidad.columna.categoria}">CATEGORÍA</th>
+                        <th th:text="#{universidad.columna.ciudad}">CIUDAD</th>
+                        <th th:text="#{universidad.columna.numSedes}">N.º SEDES</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr th:each="universidad : ${resultadoCiudad}">
+                        <td th:text="${universidad.nombre}"></td>
+                        <td th:text="${universidad.categoria}"></td>
+                        <td th:text="${universidad.ciudad}"></td>
+                        <td th:text="${universidad.numSedes}"></td>
+                    </tr>
+                </tbody>
+            </table>
+            <p th:if="${resultadoCiudad.empty}" th:text="#{universidad.reporte.vacio}">No hay universidades disponibles.</p>
+        </div>
+
+        <hr/>
+
+        <h2 th:text="#{universidad.reportes.categoria.titulo}">Buscar por categoría y sedes mínimas</h2>
+        <form th:action="@{/universidades/reportes}" method="get">
+            <div class="form-group">
+                <label for="categoria" th:text="#{universidad.formulario.campo.categoria}">Categoría:</label>
+                <input type="text" id="categoria" name="categoria" th:value="${categoria}"/>
+            </div>
+            <div class="form-group">
+                <label for="numSedes" th:text="#{universidad.reportes.campo.numSedesMinimas}">Sedes mínimas:</label>
+                <input type="number" id="numSedes" name="numSedes" th:value="${numSedes}"/>
+            </div>
+            <input class="btn btn-primary" type="submit" th:value="#{universidad.reportes.boton.buscar}" value="Buscar"/>
+        </form>
+        <div th:if="${resultadoCategoria != null}">
+            <table>
+                <thead>
+                    <tr>
+                        <th th:text="#{universidad.columna.nombre}">NOMBRE</th>
+                        <th th:text="#{universidad.columna.categoria}">CATEGORÍA</th>
+                        <th th:text="#{universidad.columna.ciudad}">CIUDAD</th>
+                        <th th:text="#{universidad.columna.numSedes}">N.º SEDES</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr th:each="universidad : ${resultadoCategoria}">
+                        <td th:text="${universidad.nombre}"></td>
+                        <td th:text="${universidad.categoria}"></td>
+                        <td th:text="${universidad.ciudad}"></td>
+                        <td th:text="${universidad.numSedes}"></td>
+                    </tr>
+                </tbody>
+            </table>
+            <p th:if="${resultadoCategoria.empty}" th:text="#{universidad.reporte.vacio}">No hay universidades disponibles.</p>
+        </div>
+    </div>
+
+    <footer th:replace="~{layout/plantilla :: footer}"></footer>
+</body>
+</html>
