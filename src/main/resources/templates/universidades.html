@@ -23,6 +23,7 @@
                         <th th:text="#{universidad.columna.ciudad}">CIUDAD</th>
                         <th th:text="#{universidad.columna.numeroCarreras}">N.º CARRERAS</th>
                         <th th:text="#{universidad.columna.numSedes}">N.º SEDES</th>
+                        <th sec:authorize="hasRole('ADMIN')" th:text="#{reporte.columna.modificar}">MODIFICAR</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -35,6 +36,9 @@
                         <td th:text="${universidad.ciudad}"></td>
                         <td th:text="${universidad.numeroCarreras}"></td>
                         <td th:text="${universidad.numSedes}"></td>
+                        <td sec:authorize="hasRole('ADMIN')">
+                            <a class="btn btn-warning" th:href="@{/universidades/modificar/{id}(id=${universidad.id})}" th:text="#{reporte.boton.modificar}">Modificar</a>
+                        </td>
                     </tr>
                 </tbody>
             </table>
