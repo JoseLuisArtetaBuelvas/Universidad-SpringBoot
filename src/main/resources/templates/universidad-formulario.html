@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{layout/plantilla :: head}">
+    <title>Datos de la universidad</title>
+</head>
+<body>
+    <header th:replace="~{layout/plantilla :: header}"></header>
+
+    <div class="container">
+        <h1 th:text="#{universidad.formulario.titulo}">Datos de la universidad</h1>
+        <a class="btn btn-secondary" th:href="@{/universidades}" th:text="#{formulario.boton.regresar}">Regresar</a>
+        <br/><br/>
+        <form th:action="@{/universidades/guardar}" method="post" th:object="${universidad}">
+            <input type="hidden" th:field="*{id}"/>
+            <div class="form-group">
+                <label for="nombre" th:text="#{universidad.formulario.campo.nombre}">Nombre:</label>
+                <input type="text" th:field="*{nombre}"/>
+                <span class="error-message" th:if="${#fields.hasErrors('nombre')}" th:errors="*{nombre}">Error Nombre</span>
+            </div>
+            <div class="form-group">
+                <label for="categoria" th:text="#{universidad.formulario.campo.categoria}">Categoría:</label>
+                <input type="text" th:field="*{categoria}"/>
+                <span class="error-message" th:if="${#fields.hasErrors('categoria')}" th:errors="*{categoria}">Error Categoría</span>
+            </div>
+            <div class="form-group">
+                <label for="web" th:text="#{universidad.formulario.campo.web}">Sitio web:</label>
+                <input type="text" th:field="*{web}"/>
+                <span class="error-message" th:if="${#fields.hasErrors('web')}" th:errors="*{web}">Error Web</span>
+            </div>
+            <div class="form-group">
+                <label for="rector" th:text="#{universidad.formulario.campo.rector}">Rector:</label>
+                <input type="text" th:field="*{rector}"/>
+                <span class="error-message" th:if="${#fields.hasErrors('rector')}" th:errors="*{rector}">Error Rector</span>
+            </div>
+            <div class="form-group">
+                <label for="email" th:text="#{universidad.formulario.campo.email}">Email:</label>
+                <input type="email" th:field="*{email}"/>
+                <span class="error-message" th:if="${#fields.hasErrors('email')}" th:errors="*{email}">Error Email</span>
+            </div>
+            <div class="form-group">
+                <label for="acceso" th:text="#{universidad.formulario.campo.acceso}">Tipo de acceso:</label>
+                <input type="text" th:field="*{acceso}"/>
+                <span class="error-message" th:if="${#fields.hasErrors('acceso')}" th:errors="*{acceso}">Error Acceso</span>
+            </div>
+            <div class="form-group">
+                <label for="telefono" th:text="#{universidad.formulario.campo.telefono}">Teléfono:</label>
+                <input type="text" th:field="*{telefono}"/>
+                <span class="error-message" th:if="${#fields.hasErrors('telefono')}" th:errors="*{telefono}">Error Teléfono</span>
+            </div>
+            <div class="form-group">
+                <label for="ciudad" th:text="#{universidad.formulario.campo.ciudad}">Ciudad:</label>
+                <input type="text" th:field="*{ciudad}"/>
+                <span class="error-message" th:if="${#fields.hasErrors('ciudad')}" th:errors="*{ciudad}">Error Ciudad</span>
+            </div>
+            <div class="form-group">
+                <label for="numeroCarreras" th:text="#{universidad.formulario.campo.numeroCarreras}">Número de carreras:</label>
+                <input type="number" th:field="*{numeroCarreras}"/>
+                <span class="error-message" th:if="${#fields.hasErrors('numeroCarreras')}" th:errors="*{numeroCarreras}">Error Carreras</span>
+            </div>
+            <div class="form-group">
+                <label for="numSedes" th:text="#{universidad.formulario.campo.numSedes}">Número de sedes:</label>
+                <input type="number" th:field="*{numSedes}"/>
+                <span class="error-message" th:if="${#fields.hasErrors('numSedes')}" th:errors="*{numSedes}">Error Sedes</span>
+            </div>
+            <br/>
+            <input class="btn btn-secondary" type="reset" th:value="#{formulario.boton.restablecer}" value="Restablecer"/>
+            <input class="btn btn-primary" type="submit" th:value="#{formulario.boton.guardar}" value="Guardar"/>
+        </form>
+    </div>
+
+    <footer th:replace="~{layout/plantilla :: footer}"></footer>
+</body>
+</html>

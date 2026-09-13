@@ -8,6 +8,7 @@
 
     <div class="container">
         <h1 th:text="#{universidad.reporte.titulo}">Universidades Registradas</h1>
+        <a sec:authorize="hasRole('ADMIN')" class="btn btn-primary" th:href="@{/universidades/agregar}" th:text="#{universidad.reporte.boton.agregar}">Agregar Universidad</a>
         <hr/>
 
         <div th:if="${universidades != null and !universidades.empty}">
