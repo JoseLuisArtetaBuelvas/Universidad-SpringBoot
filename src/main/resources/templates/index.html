@@ -22,7 +22,7 @@
 
         <h2 th:text="#{reporte.subtitulo}">Lista de Personas</h2>
         <hr/>
-        <div th:if="${usuarios != null and !usuarios.empty}">
+        <div th:if="${usuarios != null and !usuarios.empty}" class="table-responsive">
             <table>
                 <thead>
                     <tr>

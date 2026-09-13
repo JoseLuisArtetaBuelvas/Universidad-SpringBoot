@@ -11,7 +11,7 @@
         <a sec:authorize="hasRole('ADMIN')" class="btn btn-primary" th:href="@{/universidades/agregar}" th:text="#{universidad.reporte.boton.agregar}">Agregar Universidad</a>
         <hr/>
 
-        <div th:if="${universidades != null and !universidades.empty}">
+        <div th:if="${universidades != null and !universidades.empty}" class="table-responsive">
             <table>
                 <thead>
                     <tr>

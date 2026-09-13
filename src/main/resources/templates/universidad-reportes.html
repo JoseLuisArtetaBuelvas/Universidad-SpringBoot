@@ -19,7 +19,7 @@
             </div>
             <input class="btn btn-primary" type="submit" th:value="#{universidad.reportes.boton.buscar}" value="Buscar"/>
         </form>
-        <div th:if="${resultadoCiudad != null}">
+        <div th:if="${resultadoCiudad != null}" class="table-responsive">
             <table>
                 <thead>
                     <tr>
@@ -55,7 +55,7 @@
             </div>
             <input class="btn btn-primary" type="submit" th:value="#{universidad.reportes.boton.buscar}" value="Buscar"/>
         </form>
-        <div th:if="${resultadoCategoria != null}">
+        <div th:if="${resultadoCategoria != null}" class="table-responsive">
             <table>
                 <thead>
                     <tr>
