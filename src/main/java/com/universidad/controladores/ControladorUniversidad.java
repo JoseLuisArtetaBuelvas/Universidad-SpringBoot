@@ -41,4 +41,12 @@ public class ControladorUniversidad {
         universidadServicio.guardarUniversidad(universidad);
         return "redirect:/universidades";
     }
+
+    @GetMapping({"/universidades/modificar/{id}", "/universidades/modificar"})
+    public String modificar(Universidad universidad, Model modelo) {
+        log.info("Modificando universidad: " + universidad);
+        universidad = universidadServicio.buscarUniversidad(universidad);
+        modelo.addAttribute("universidad", universidad);
+        return "universidad-formulario";
+    }
 }
