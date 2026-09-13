@@ -27,6 +27,7 @@
                         <th>NOMBRE</th>
                         <th>EMAIL</th>
                         <th>ROL</th>
+                        <th>MODIFICAR</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -36,6 +37,9 @@
                         <td th:text="${usuario.nombre}"></td>
                         <td th:text="${usuario.email}"></td>
                         <td th:text="${usuario.rol}"></td>
+                        <td>
+                            <a th:href="@{/modificar/{id}(id=${usuario.id})}" th:text="Modificar"></a>
+                        </td>
                     </tr>
                 </tbody>
             </table>
