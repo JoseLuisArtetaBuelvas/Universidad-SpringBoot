@@ -8,6 +8,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import lombok.extern.slf4j.Slf4j;
 import com.universidad.modelo.Universidad;
 import jakarta.validation.Valid;
@@ -55,5 +56,26 @@ public class ControladorUniversidad {
         log.info("Eliminando universidad: " + universidad);
         universidadServicio.eliminarUniversidad(universidad);
         return "redirect:/universidades";
+    }
+
+    @GetMapping("/universidades/reportes")
+    public String reportes(
+            @RequestParam(required = false) String ciudad,
+            @RequestParam(required = false) String categoria,
+            @RequestParam(required = false) Integer numSedes,
+            Model modelo) {
+
+        if (ciudad != null && !ciudad.isBlank()) {
+            modelo.addAttribute("resultadoCiudad", universidadServicio.buscarPorCiudad(ciudad));
+            modelo.addAttribute("ciudad", ciudad);
+        }
+
+        if (categoria != null && !categoria.isBlank() && numSedes != null) {
+            modelo.addAttribute("resultadoCategoria", universidadServicio.buscarPorCategoriaYSedesMinimas(categoria, numSedes));
+            modelo.addAttribute("categoria", categoria);
+            modelo.addAttribute("numSedes", numSedes);
+        }
+
+        return "universidad-reportes";
     }
 }

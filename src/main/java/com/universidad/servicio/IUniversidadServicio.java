@@ -9,4 +9,6 @@ public interface IUniversidadServicio {
     public void guardarUniversidad(Universidad universidad);
     public void eliminarUniversidad(Universidad universidad);
     public Universidad buscarUniversidad(Universidad universidad);
+    public List<Universidad> buscarPorCiudad(String ciudad);
+    public List<Universidad> buscarPorCategoriaYSedesMinimas(String categoria, Integer numSedes);
 }

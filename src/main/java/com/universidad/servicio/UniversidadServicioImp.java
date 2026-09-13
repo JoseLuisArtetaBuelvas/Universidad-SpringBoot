@@ -40,4 +40,16 @@ public class UniversidadServicioImp implements IUniversidadServicio {
     public Universidad buscarUniversidad(Universidad universidad) {
         return universidadCrud.findById(universidad.getId()).orElse(null);
     }
+
+    @Transactional(readOnly = true)
+    @Override
+    public List<Universidad> buscarPorCiudad(String ciudad) {
+        return universidadCrud.findByCiudadIgnoreCase(ciudad);
+    }
+
+    @Transactional(readOnly = true)
+    @Override
+    public List<Universidad> buscarPorCategoriaYSedesMinimas(String categoria, Integer numSedes) {
+        return universidadCrud.findByCategoriaIgnoreCaseAndNumSedesGreaterThanEqual(categoria, numSedes);
+    }
 }
