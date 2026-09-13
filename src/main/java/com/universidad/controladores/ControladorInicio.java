@@ -10,6 +10,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.ui.Model;
 import lombok.extern.slf4j.Slf4j;
 import com.universidad.modelo.Usuario;
+import jakarta.validation.Valid;
+import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.PostMapping;
 
 
@@ -32,7 +34,10 @@ public class ControladorInicio {
     }
 
     @PostMapping("/guardar")
-    public String guardar(Usuario usuario) {
+    public String guardar(@Valid Usuario usuario, Errors errores) {
+        if (errores.hasErrors()) {
+            return "modificar";
+        }
         usuarioServicio.guardarUsuario(usuario);
         return "redirect:/";
     }
