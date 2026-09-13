@@ -136,17 +136,17 @@
     <!-- Fragmento de cabecera con navegación -->
     <header th:fragment="header">
         <div>
-            <h1>Universidad - Portal Administrativo</h1>
+            <h1 th:text="#{plantilla.cabecera}">Universidad - Portal Administrativo</h1>
         </div>
         <nav>
-            <a th:href="@{/}">Inicio</a>
-            <a th:href="@{/agregar}">Agregar Usuario</a>
+            <a th:href="@{/}" th:text="#{plantilla.inicio}">Inicio</a>
+            <a th:href="@{/agregar}" th:text="#{plantilla.agregar}">Agregar Usuario</a>
         </nav>
     </header>
 
     <!-- Fragmento de pie de página -->
     <footer th:fragment="footer">
-        <p>&copy; 2026 Universidad de Cartagena - Ingeniería de Desarrollo Web. Todos los derechos reservados.</p>
+        <p th:text="#{plantilla.pie}">&copy; 2026 Universidad de Cartagena - Ingeniería de Desarrollo Web. Todos los derechos reservados.</p>
     </footer>
 </body>
 </html>
