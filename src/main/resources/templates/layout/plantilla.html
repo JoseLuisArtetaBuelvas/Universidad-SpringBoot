@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<html lang="es" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head th:fragment="head">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -138,9 +138,16 @@
         <div>
             <h1 th:text="#{plantilla.cabecera}">Universidad - Portal Administrativo</h1>
         </div>
-        <nav>
+        <nav style="display: flex; align-items: center; gap: 1rem;">
             <a th:href="@{/}" th:text="#{plantilla.inicio}">Inicio</a>
-            <a th:href="@{/agregar}" th:text="#{plantilla.agregar}">Agregar Usuario</a>
+            <a sec:authorize="hasRole('ADMIN')" th:href="@{/agregar}" th:text="#{plantilla.agregar}">Agregar Usuario</a>
+            <div sec:authorize="isAuthenticated()" style="display: inline-flex; align-items: center; gap: 0.75rem; margin-left: 0.5rem; background: rgba(255,255,255,0.1); padding: 4px 12px; border-radius: 20px;">
+                <span style="font-size: 0.9rem; color: #e0e7ff;">👤 <span th:text="#{login.bienvenido} + ', '">Bienvenido, </span><b sec:authentication="name">Usuario</b></span>
+                <form th:action="@{/logout}" method="post" style="margin: 0; display: inline;">
+                    <button type="submit" class="btn btn-danger" style="padding: 3px 10px; font-size: 0.8rem;" th:text="#{plantilla.salir}">Cerrar Sesión</button>
+                </form>
+            </div>
+            <a sec:authorize="!isAuthenticated()" class="btn btn-primary" th:href="@{/login}" th:text="#{login.titulo}">Iniciar Sesión</a>
         </nav>
     </header>
 
