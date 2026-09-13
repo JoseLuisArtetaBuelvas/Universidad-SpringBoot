@@ -1,13 +1,17 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
-<meta charset="UTF-8">
-<title>Title</title>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{layout/plantilla :: head}">
+    <title>Página de Inicio</title>
+</head>
 <body>
-    <div>
+    <header th:replace="~{layout/plantilla :: header}"></header>
+
+    <div class="container">
         <h1>Página de Inicio</h1>
-        <a th:href="@{/agregar}">Agregar Usuario</a>
+        <a class="btn btn-primary" th:href="@{/agregar}">Agregar Usuario</a>
         <p th:text="${mensaje}"></p>
-        <hr>
+        <hr/>
+
         <div th:if="${usuario != null}">
             <b>CÉDULA:</b> <span th:text="${usuario.id}"></span><br/>
             <b>CLAVE:</b> <span th:text="${usuario.clave}"></span><br/>
@@ -17,9 +21,9 @@
         </div>
 
         <h2>Lista de Personas</h2>
-        <hr>
+        <hr/>
         <div th:if="${usuarios != null and !usuarios.empty}">
-            <table border="1">
+            <table>
                 <thead>
                     <tr>
                         <th>CÉDULA</th>
@@ -39,10 +43,10 @@
                         <td th:text="${usuario.email}"></td>
                         <td th:text="${usuario.rol}"></td>
                         <td>
-                            <a th:href="@{/modificar/{id}(id=${usuario.id})}" th:text="Modificar"></a>
+                            <a class="btn btn-warning" th:href="@{/modificar/{id}(id=${usuario.id})}" th:text="Modificar"></a>
                         </td>
                         <td>
-                            <a th:href="@{/eliminar/{id}(id=${usuario.id})}" th:text="Eliminar"></a>
+                            <a class="btn btn-danger" th:href="@{/eliminar/{id}(id=${usuario.id})}" th:text="Eliminar"></a>
                         </td>
                     </tr>
                 </tbody>
@@ -52,5 +56,7 @@
             <p>No hay usuarios disponibles.</p>
         </div>
     </div>
+
+    <footer th:replace="~{layout/plantilla :: footer}"></footer>
 </body>
 </html>
