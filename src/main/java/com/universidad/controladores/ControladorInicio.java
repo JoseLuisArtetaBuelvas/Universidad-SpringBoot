@@ -36,4 +36,12 @@ public class ControladorInicio {
         usuarioServicio.guardarUsuario(usuario);
         return "redirect:/";
     }
+
+    @GetMapping("/modificar/{id}")
+    public String modificar(Usuario usuario, Model modelo) {
+        log.info("Modificando usuario: " + usuario);
+        usuario = usuarioServicio.buscarUsuario(usuario);
+        modelo.addAttribute("usuario", usuario);
+        return "modificar";
+    }
 }
