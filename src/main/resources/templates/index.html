@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<html lang="es" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head th:replace="~{layout/plantilla :: head}">
     <title>Página de Inicio</title>
 </head>
@@ -8,7 +8,7 @@
 
     <div class="container">
         <h1 th:text="#{reporte.titulo}">Página de Inicio</h1>
-        <a class="btn btn-primary" th:href="@{/agregar}" th:text="#{reporte.boton.agregar}">Agregar Usuario</a>
+        <a sec:authorize="hasRole('ADMIN')" class="btn btn-primary" th:href="@{/agregar}" th:text="#{reporte.boton.agregar}">Agregar Usuario</a>
         <p th:text="${mensaje}"></p>
         <hr/>
 
@@ -31,8 +31,8 @@
                         <th th:text="#{reporte.columna.nombre}">NOMBRE</th>
                         <th th:text="#{reporte.columna.email}">EMAIL</th>
                         <th th:text="#{reporte.columna.rol}">ROL</th>
-                        <th th:text="#{reporte.columna.modificar}">MODIFICAR</th>
-                        <th th:text="#{reporte.columna.eliminar}">ELIMINAR</th>
+                        <th sec:authorize="hasRole('ADMIN')" th:text="#{reporte.columna.modificar}">MODIFICAR</th>
+                        <th sec:authorize="hasRole('ADMIN')" th:text="#{reporte.columna.eliminar}">ELIMINAR</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -42,10 +42,10 @@
                         <td th:text="${usuario.nombre}"></td>
                         <td th:text="${usuario.email}"></td>
                         <td th:text="${usuario.rol}"></td>
-                        <td>
+                        <td sec:authorize="hasRole('ADMIN')">
                             <a class="btn btn-warning" th:href="@{/modificar/{id}(id=${usuario.id})}" th:text="#{reporte.boton.modificar}">Modificar</a>
                         </td>
-                        <td>
+                        <td sec:authorize="hasRole('ADMIN')">
                             <a class="btn btn-danger" th:href="@{/eliminar/{id}(id=${usuario.id})}" th:text="#{reporte.boton.eliminar}">Eliminar</a>
                         </td>
                     </tr>
