@@ -19,6 +19,7 @@ target/
 *.iml
 *.ipr
 Contexto.md
+GUIA_VIDEO_SUSTENTACION.md
 
 ### Variables de entorno locales ###
 .env
