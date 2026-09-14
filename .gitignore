@@ -20,6 +20,9 @@ target/
 *.ipr
 Contexto.md
 
+### Variables de entorno locales ###
+.env
+
 ### NetBeans ###
 /nbproject/private/
 /nbbuild/
