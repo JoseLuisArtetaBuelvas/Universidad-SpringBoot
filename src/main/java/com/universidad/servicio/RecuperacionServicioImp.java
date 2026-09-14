@@ -39,8 +39,9 @@ public class RecuperacionServicioImp implements IRecuperacionServicio {
     @Override
     @Transactional
     public void solicitarRecuperacion(String idOEmail) {
-        Optional<Usuario> usuario = usuarioCrud.findById(idOEmail)
-                .or(() -> usuarioCrud.findByEmail(idOEmail));
+        String identificador = idOEmail == null ? "" : idOEmail.trim();
+        Optional<Usuario> usuario = usuarioCrud.findById(identificador)
+                .or(() -> usuarioCrud.findByEmailIgnoreCase(identificador));
 
         if (usuario.isEmpty() || usuario.get().getEmail() == null) {
             log.info("Solicitud de recuperación para un identificador no encontrado o sin correo asociado");
