@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{layout/plantilla :: head}">
+    <title>Restablecer contraseña</title>
+</head>
+<body>
+    <header th:replace="~{layout/plantilla :: header}"></header>
+
+    <div class="container" style="max-width: 450px; margin-top: 3rem;">
+        <div style="text-align: center; margin-bottom: 1.5rem;">
+            <h1 th:text="#{restablecer.titulo}">Nueva contraseña</h1>
+        </div>
+
+        <div th:if="${!tokenValido}" style="background-color: #fee2e2; border: 1px solid #f87171; color: #b91c1c; padding: 12px; border-radius: 6px; margin-bottom: 1.5rem; font-size: 0.9rem;">
+            <span th:text="#{restablecer.tokenInvalido}">El enlace de recuperación no es válido o ya expiró. Solicita uno nuevo.</span>
+        </div>
+
+        <div th:if="${tokenValido}">
+            <div th:if="${error == 'clavesNoCoinciden'}" style="background-color: #fee2e2; border: 1px solid #f87171; color: #b91c1c; padding: 12px; border-radius: 6px; margin-bottom: 1.5rem; font-size: 0.9rem;">
+                <span th:text="#{restablecer.clavesNoCoinciden}">Las contraseñas no coinciden.</span>
+            </div>
+
+            <form th:action="@{/restablecer}" method="post">
+                <input type="hidden" name="token" th:value="${token}"/>
+                <div class="form-group">
+                    <label for="nuevaClave" th:text="#{restablecer.campo.nuevaClave}">Nueva contraseña:</label>
+                    <input type="password" id="nuevaClave" name="nuevaClave" style="max-width: 100%;" required/>
+                </div>
+                <div class="form-group">
+                    <label for="confirmarClave" th:text="#{restablecer.campo.confirmarClave}">Confirmar contraseña:</label>
+                    <input type="password" id="confirmarClave" name="confirmarClave" style="max-width: 100%;" required/>
+                </div>
+                <div style="margin-top: 1.5rem;">
+                    <button type="submit" class="btn btn-primary" style="width: 100%; padding: 10px; font-size: 1rem;" th:text="#{restablecer.boton}">Guardar nueva contraseña</button>
+                </div>
+            </form>
+        </div>
+
+        <div th:if="${!tokenValido}" style="text-align: center; margin-top: 1rem;">
+            <a th:href="@{/recuperar}" th:text="#{restablecer.solicitarNuevo}">Solicitar un nuevo enlace</a>
+        </div>
+    </div>
+</body>
+</html>

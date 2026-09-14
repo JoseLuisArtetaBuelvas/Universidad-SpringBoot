@@ -20,6 +20,10 @@
             <span th:text="#{login.logout}">Ha cerrado la sesión correctamente.</span>
         </div>
 
+        <div th:if="${param.claveRestablecida}" style="background-color: #dcfce7; border: 1px solid #86efac; color: #15803d; padding: 12px; border-radius: 6px; margin-bottom: 1.5rem; font-size: 0.9rem;">
+            <span th:text="#{restablecer.exito}">Tu contraseña fue actualizada. Ya puedes iniciar sesión.</span>
+        </div>
+
         <form th:action="@{/login}" method="post">
             <div class="form-group">
                 <label for="username" th:text="#{login.usuario}">Usuario / Cédula:</label>
@@ -35,6 +39,10 @@
                 <button type="submit" class="btn btn-primary" style="width: 100%; padding: 10px; font-size: 1rem;" th:text="#{login.boton}">Iniciar Sesión</button>
             </div>
         </form>
+
+        <div style="text-align: center; margin-top: 1rem;">
+            <a th:href="@{/recuperar}" th:text="#{login.olvideClave}">¿Olvidaste tu contraseña?</a>
+        </div>
     </div>
 </body>
 </html>
