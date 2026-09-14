@@ -26,7 +26,7 @@ public class UsuarioDetallesServicio implements UserDetailsService {
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         // Buscar por id (cédula) o por email
         Usuario usuario = usuarioCrud.findById(username)
-                .or(() -> usuarioCrud.findByEmail(username))
+                .or(() -> usuarioCrud.findByEmailIgnoreCase(username))
                 .orElse(null);
 
         if (usuario == null) {
