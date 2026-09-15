@@ -23,6 +23,7 @@ GUIA_VIDEO_SUSTENTACION.md
 
 ### Variables de entorno locales ###
 .env
+render-env-vars.txt
 
 ### NetBeans ###
 /nbproject/private/
