@@ -12,4 +12,5 @@ public interface IUsuarioServicio {
     public Usuario buscarUsuario(Usuario usuario);
     public List<Usuario> buscarPorRol(String rol);
     public List<Usuario> buscarPorNombre(String nombre);
+    public List<String> listarRoles();
 }

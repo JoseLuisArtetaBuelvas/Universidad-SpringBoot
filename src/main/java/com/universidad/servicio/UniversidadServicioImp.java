@@ -52,4 +52,16 @@ public class UniversidadServicioImp implements IUniversidadServicio {
     public List<Universidad> buscarPorCategoriaYSedesMinimas(String categoria, Integer numSedes) {
         return universidadCrud.findByCategoriaIgnoreCaseAndNumSedesGreaterThanEqual(categoria, numSedes);
     }
+
+    @Transactional(readOnly = true)
+    @Override
+    public List<String> listarCiudades() {
+        return universidadCrud.listarCiudadesDistintas();
+    }
+
+    @Transactional(readOnly = true)
+    @Override
+    public List<String> listarCategorias() {
+        return universidadCrud.listarCategoriasDistintas();
+    }
 }
