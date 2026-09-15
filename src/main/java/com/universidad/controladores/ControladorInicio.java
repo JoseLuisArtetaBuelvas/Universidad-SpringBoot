@@ -64,6 +64,8 @@ public class ControladorInicio {
             @RequestParam(required = false) String nombre,
             Model modelo) {
 
+        modelo.addAttribute("roles", usuarioServicio.listarRoles());
+
         if (rol != null && !rol.isBlank()) {
             modelo.addAttribute("resultadoRol", usuarioServicio.buscarPorRol(rol));
             modelo.addAttribute("rol", rol);

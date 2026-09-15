@@ -17,8 +17,7 @@
                 <label for="rol" th:text="#{formulario.campo.rol}">Rol:</label>
                 <select id="rol" name="rol">
                     <option value="" th:text="#{formulario.rol.placeholder}">-- Seleccione un rol --</option>
-                    <option value="ADMIN" th:selected="${rol == 'ADMIN'}">ADMIN</option>
-                    <option value="USER" th:selected="${rol == 'USER'}">USER</option>
+                    <option th:each="r : ${roles}" th:value="${r}" th:text="${r}" th:selected="${r == rol}">ROL</option>
                 </select>
             </div>
             <input class="btn btn-primary" type="submit" th:value="#{universidad.reportes.boton.buscar}" value="Buscar"/>

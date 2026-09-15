@@ -11,4 +11,6 @@ public interface IUniversidadServicio {
     public Universidad buscarUniversidad(Universidad universidad);
     public List<Universidad> buscarPorCiudad(String ciudad);
     public List<Universidad> buscarPorCategoriaYSedesMinimas(String categoria, Integer numSedes);
+    public List<String> listarCiudades();
+    public List<String> listarCategorias();
 }

@@ -15,7 +15,10 @@
         <form th:action="@{/universidades/reportes}" method="get">
             <div class="form-group">
                 <label for="ciudad" th:text="#{universidad.formulario.campo.ciudad}">Ciudad:</label>
-                <input type="text" id="ciudad" name="ciudad" th:value="${ciudad}"/>
+                <select id="ciudad" name="ciudad">
+                    <option value="" th:text="#{universidad.reportes.placeholder.ciudad}">-- Seleccione una ciudad --</option>
+                    <option th:each="c : ${ciudades}" th:value="${c}" th:text="${c}" th:selected="${c == ciudad}">CIUDAD</option>
+                </select>
             </div>
             <input class="btn btn-primary" type="submit" th:value="#{universidad.reportes.boton.buscar}" value="Buscar"/>
         </form>
@@ -47,7 +50,10 @@
         <form th:action="@{/universidades/reportes}" method="get">
             <div class="form-group">
                 <label for="categoria" th:text="#{universidad.formulario.campo.categoria}">Categoría:</label>
-                <input type="text" id="categoria" name="categoria" th:value="${categoria}"/>
+                <select id="categoria" name="categoria">
+                    <option value="" th:text="#{universidad.reportes.placeholder.categoria}">-- Seleccione una categoría --</option>
+                    <option th:each="cat : ${categorias}" th:value="${cat}" th:text="${cat}" th:selected="${cat == categoria}">CATEGORÍA</option>
+                </select>
             </div>
             <div class="form-group">
                 <label for="numSedes" th:text="#{universidad.reportes.campo.numSedesMinimas}">Sedes mínimas:</label>

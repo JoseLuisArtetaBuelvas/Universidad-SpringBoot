@@ -65,6 +65,9 @@ public class ControladorUniversidad {
             @RequestParam(required = false) Integer numSedes,
             Model modelo) {
 
+        modelo.addAttribute("ciudades", universidadServicio.listarCiudades());
+        modelo.addAttribute("categorias", universidadServicio.listarCategorias());
+
         if (ciudad != null && !ciudad.isBlank()) {
             modelo.addAttribute("resultadoCiudad", universidadServicio.buscarPorCiudad(ciudad));
             modelo.addAttribute("ciudad", ciudad);

@@ -52,4 +52,10 @@ public class UsuarioServicioImp implements IUsuarioServicio {
     public List<Usuario> buscarPorNombre(String nombre) {
         return usuarioCrud.findByNombreContainingIgnoreCase(nombre);
     }
+
+    @Transactional(readOnly = true)
+    @Override
+    public List<String> listarRoles() {
+        return usuarioCrud.listarRolesDistintos();
+    }
 }
