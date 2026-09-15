@@ -201,7 +201,7 @@ Universidad - Spring Boot/
 
 ## 🌐 Despliegue
 
-*(pendiente)* — URL pública: `______`
+— URL pública: `https://universidad-springboot.onrender.com/`
 
 ## 📖 Guía de referencia
 
